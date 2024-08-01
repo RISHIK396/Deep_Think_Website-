@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Collapsible Sidebar</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+    }
+
+    .sidebar {
+      height: 100vh;
+      width: 250px;
+      background-color: #f4f4f4;
+      position: fixed;
+      top: 0;
+      left: 0;
+      transition: all 0.3s ease;
+    }
+
+    .sidebar.collapsed {
+      width: 60px;
+    }
+
+    .sidebar-header {
+      padding: 20px;
+      text-align: center;
+    }
+
+    .sidebar-header h2 {
+      margin: 0;
+    }
+
+    .sidebar-list {
+      padding: 0;
+      margin: 0;
+    }
+
+    .sidebar-list li {
+      list-style: none;
+      padding: 15px 20px;
+      border-bottom: 1px solid #ddd;
+      cursor: pointer;
+    }
+
+    .sidebar-list li.active {
+      background-color: #eee;
+    }
+
+    .sidebar-list li:last-child {
+      border-bottom: none;
+    }
+
+    .sidebar-list li a {
+      text-decoration: none;
+      color: #333;
+    }
+
+    .sidebar-list li.active a {
+      font-weight: bold;
+    }
+
+    .sidebar-list li.collapsed a {
+      display: none;
+    }
+
+    .sidebar-list li.collapsed .icon {
+      display: inline-block;
+    }
+
+    .content {
+      padding-top: 60px;
+      padding-left: 250px;
+      transition: all 0.3s ease;
+    }
+
+    .content.collapsed {
+      padding-left: 60px;
+    }
+
+    .toggle-button {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      padding: 10px;
+      background-color: #fff;
+      border-radius: 50%;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+    }
+
+    .toggle-button i {
+      font-size: 20px;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="toggle-button">
+    <i class="fas fa-bars"></i>
+  </div>
+
+  <div class="sidebar">
+    <div class="sidebar-header">
+      <h2>DEEP THOUGHT</h2>
+    </div>
+    <ul class="sidebar-list">
+      <li>
+        <a href="#">Explore the world of management</a>
+      </li>
+      <li>
+        <a href="#">Technical Project Management</a>
+      </li>
+      <li>
+        <a href="#">Threadbuild</a>
+      </li>
+      <li>
+        <a href="#">Structure your pointers</a>
+      </li>
+      <li>
+        <a href="#">4SA Method</a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="content">
+    <h1>Welcome to the content area!</h1>
+    <p>This is where your main content will be displayed.</p>
+  </div>
+
+  <script>
+    const toggleButton = document.querySelector('.toggle-button');
+    const sidebar = document.querySelector('.sidebar');
+    const content = document.querySelector('.content');
+
+    toggleButton.addEventListener('click', () => {
+      sidebar.classList.toggle('collapsed');
+      content.classList.toggle('collapsed');
+
+      // Update the icon based on the sidebar state
+      toggleButton.querySelector('i').classList.toggle('fa-bars');
+      toggleButton.querySelector('i').classList.toggle('fa-times');
+    });
+  </script>
+</body>
+</html>
